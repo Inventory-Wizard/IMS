@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/register.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+</head>
+
+<body>
+    <script src="/js/register.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- Navbar-->
+    <header class="header">
+        <nav class="navbar-brand p-2">
+            <div class="container">
+                <!-- Navbar Brand -->
+                <!--Include the ICON of CAN-INDIA-->
+                    <img src="/images/logo.svg" alt="logo" class="img-fluid">
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center">
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                <h1>Create an Account</h1>
+                <img src="https://preview.colorlib.com/theme/bootstrap/login-form-07/images/undraw_remotely_2j6y.svg" alt=""
+                    class="img-fluid mb-3 d-none d-md-block">
+                
+            </div>
+
+            <!-- Registeration Form -->
+            <div class="col-md-7 col-lg-6 ml-auto">
+                <form action="/register" method="POST">
+                    <div class="row">
+
+                        <!-- First Name -->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="firstName" type="text" name="firstname" placeholder="First Name"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="lastName" type="text" name="lastname" placeholder="Last Name"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-envelope text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="email" type="email" name="email" placeholder="Email Address"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-phone-square text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="phoneNumber" type="tel" name="phoneNumber" placeholder="Phone Number"
+                                class="form-control bg-white border-md border-left-0">
+                        </div>
+                        <!-- Password -->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="password" type="password" name="password" placeholder="Password"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <!-- Password Confirmation -->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="passwordConfirmation" type="password" name="passwordConfirmation"
+                                placeholder="Confirm Password" class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group col-lg-12 mx-auto mb-0">
+                            <button type="submit" class="btn btn-primary btn-block py-2">
+                                <span class="font-weight-bold">Create your account</span>
+                            </button>
+                        </div>
+
+
+
+                        <!-- Already Registered -->
+                        <div class="text-center w-100 m-3">
+                            <p class="text-muted font-weight-bold">Already Registered? <a href="../login"
+                                    class="text-primary ml-2">Login</a></p>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="container-lg">
+          <div class="row p-2">
+            <div class="col-md-6 copyright">
+              <p>© 2024 CAN-INDIA SALES. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
