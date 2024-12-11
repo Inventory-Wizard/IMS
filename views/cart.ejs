@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <%- include('navbar') %>
+        <div class="container py-5">
+        <div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-5">
+                        <div class="row">
+                            <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                            <div class="col text-end"><%= cart.length %> items</div>
+                        </div>
+                    </div>
+                    <% if (cart.length === 0) { %>
+                        <p>Your cart is empty.</p>
+                        <div class="back-to-shop"><a href="/home">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+                    <% } else { %>
+                    <% cart.forEach(item => { %>    
+                    <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-2"><img class="img-fluid" src="<%= item.image_url || '/images/default-product.jpg' %>"></div>
+                            <div class="col">
+                            <div class="row"><%= item.product_name %></div>
+                            </div>
+                            <div class="col">
+                                <form action="/cart/update/<%= item.productId %>" method="POST">
+                                    <div class="col-7"><input type="number" name="quantity" class="form-control border-dark-subtle input-number quantity" value="<%= item.quantity %>" min="1" required></div>
+                                    <button type="submit">Update</button>
+                                </form>
+                            </div>
+                            <div class="col">
+                                <% if (typeof item.product_price === 'number' && !isNaN(item.product_price)) { %>
+                                    <%= item.product_price.toFixed(2) %> <!-- Display the product price -->
+                                <% } else { %>
+                                    N/A
+                                <% } %>
+                            </div>
+                            <div class="col"> 
+                                <% if (typeof item.product_price === 'number' && !isNaN(item.product_price)) { %>
+                                    <%= (item.product_price * item.quantity).toFixed(2) %> <!-- Calculate the total for this item -->
+                                <% } else { %>
+                                    N/A
+                                <% } %>                                
+                            </div>
+                            <div class="col"> 
+                            <form action="/cart/remove/<%= item.productId %>" method="POST">
+                                <button type="submit"><span class="close">&#10005;</span></button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>                    
+                    <div class="mt-5"><a href="/home">&leftarrow;<span class="text-muted">Back to shop</span></a></div>
+                </div>
+                <% 
+                const taxRate = 0.13
+                const total = cart.reduce((total, item) => 
+                total + (typeof item.product_price === 'number' && !isNaN(item.product_price) 
+                ? item.product_price * item.quantity 
+                : 0
+                ), 0) 
+                const tax = parseFloat((total * taxRate).toFixed(2))
+                const total_with_tax = parseFloat((total + tax).toFixed(2))
+                %>
+
+                <div class="col-md-4 p-3 bg-light">
+                    <div><h5><b>Summary</b></h5></div>
+                    <hr>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col" >ITEMS <%= cart.length %></div>
+                        <div class="col text-right">&dollar;<%= total.toFixed(2) %> </div>
+                    </div>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">Tax (13%)</div>
+                        <div class="col text-right">&dollar; <%= tax.toFixed(2) %></div>
+                    </div>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right">&dollar; <%= total_with_tax.toFixed(2) %></div>
+                    </div>
+                    <form action="/cart/confirm" method="POST">
+                        <button type="submit" class="w-100 btn btn-primary btn-lg mb-3 me-3">Place Order</button>
+                    </form>
+                <% } %>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <%- include('footer') %>
+    </body>
+</html>
